@@ -59,7 +59,7 @@ if __name__=='__main__':
     os.makedirs(os.path.join(args.data_path, 'training/beam_labels'), exist_ok=True)
 
     sample_id_list = range(7481) # all KITTI
-    num_workers = 32 # depends on available CPU cores
+    num_workers = os.cpu_count() // 2 # depends on available CPU cores
 
     import concurrent.futures as futures
     import time

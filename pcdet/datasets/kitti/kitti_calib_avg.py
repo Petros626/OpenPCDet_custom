@@ -10,7 +10,7 @@ def parse_config():
                         help='Aggregation method: mean or median')
     parser.add_argument('--split', type=str, default='training', choices=['training', 'testing', 'all'],
                         help='Which split to use: training (7481), testing (7518), or all (14999)')
-    parser.add_argument('--num_workers', type=int, default=4,
+    parser.add_argument('--num_workers', type=int, default=os.cpu_count() // 2,
                         help='Number of parallel workers')
 
     args = parser.parse_args()
@@ -75,7 +75,6 @@ def save_calib_avg(all_calibs, output_path, method, num_samples):
         return f"{name}: {vals_str}\n"
 
     with open(os.path.join(output_path, f'calib_{method}.txt'), 'w') as f:
-        f.write(f"# KITTI {method.upper()} Calibration ({num_samples} samples)\n\n")
         f.write(mat_to_line("P2", P2[:3, :]))  # 3x4
         f.write(mat_to_line("R0_rect", R0[:3, :3]))  # 3x3
         f.write(mat_to_line("Tr_velo_to_cam", Tr_velo_to_cam[:3, :]))  # 3x4
@@ -100,9 +99,9 @@ if __name__=='__main__':
     
     print(f"Using {len(sample_id_list)} samples from {args.split} split")
     
-    output_path = os.path.join(args.data_path, f'{args.split}/calib_avg')
+    output_path = os.path.join(args.data_path, f'{args.split}/calib_average')
     if args.split == 'all':
-        output_path = os.path.join(args.data_path, 'calib_avg')
+        output_path = os.path.join(args.data_path, 'calib_average')
     os.makedirs(output_path, exist_ok=True)
     
     num_workers = args.num_workers
