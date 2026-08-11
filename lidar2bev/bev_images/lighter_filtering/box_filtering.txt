@@ -1,9 +1,0 @@
-The function get_rot_bevbox in bev_vis_utils.py filters every bounding box, which is with one corner outside the image boundaries.
-A lighter approach could be from https://github.com/AlejandroBarrera/birdnet2/blob/5ceed811b289796d7d7420a064ecb079c80801ab/tools/convert_kitti_to_coco_rotation.py#L113.
-Here only boxes fully outside (all corners) the image boundaries get clipped to stay inside the image boundaries.
-
-Currently in folder train/labels and val/labels are empty .txt files related to the strict filtering. 
-I removed these empty labels with related images from the ultralytics specified dataset folders. 
-For the training data the slighter filtering method didn't bring more value (objects with more points). 
-On the positive side for the validation data it brought 6 more images, that can be validated. 
-The objects have more detail and are not directly at the edge of the image.
