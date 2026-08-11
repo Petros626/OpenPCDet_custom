@@ -799,7 +799,7 @@ def generate_zod_groundtruth_txts(sample, valid_indices, output_path=None, frame
             dims[:, 0] += l_offsets # l
             dims[:, 1] += w_offsets # w
         else:
-            print("[WARNING] generate_zod_groundtruth_txts: offsets=False. "
+            print("[WARNING] generate_zod_groundtruth_txts(): offsets=False. "
                   "Training labels use offsets (Car: +0.4, Ped/Cyc: +0.3). "
                   "Mismatch may reduce AP scores!")
 
