@@ -133,7 +133,7 @@ if __name__ == "__main__":
     #kitti_process("/home/rlab10/OpenPCDet/data/kitti/kitti_val_dataset.pkl", get_abnorm_idx=False, analyze_truncation=False)
     # 7481 frames, has the most meaningful values for Statistical Normalization (SN)
     # Source: Train in Germany, Test in The USA: Making 3D Object Detectors Generalize.
-    kitti_process("/home/rlab10/OpenPCDet/data/kitti/kitti_train_dataset.pkl", get_abnorm_idx=False, analyze_truncation=False)
+    #kitti_process("/home/rlab10/OpenPCDet/data/kitti/kitti_train_dataset.pkl", get_abnorm_idx=False, analyze_truncation=False)
 
     # ZOD
     #kitti_process("/home/rlab10/OpenPCDet/data/zod/zod_val_dataset.pkl", get_abnorm_idx=False, analyze_truncation=False)

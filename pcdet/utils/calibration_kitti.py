@@ -52,7 +52,6 @@ class Calibration(object):
         :param pts_lidar: (N, 3)
         :return pts_rect: (N, 3)
         """
-        #print(f'{self.rect_to_lidar.__name__} method was called') # DEBUG
         pts_rect_hom = self.cart_to_hom(pts_rect)  # (N, 4)
         R0_ext = np.hstack((self.R0, np.zeros((3, 1), dtype=np.float32)))  # (3, 4)
         R0_ext = np.vstack((R0_ext, np.zeros((1, 4), dtype=np.float32)))  # (4, 4)

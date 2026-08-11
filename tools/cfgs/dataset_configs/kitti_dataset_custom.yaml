@@ -1,13 +1,9 @@
 DATASET: 'KittiDatasetCustom'
 DATA_PATH: '../data/kitti'
-###############################################
-# This file is configured to a research paper,#
-# normally custom_dataset.yaml "can" be used. #
-###############################################
 
-#########################
-# Point Cloud Range Law #
-#########################
+# This file is configured to a research paper, normally custom_dataset.yaml "can" be used. 
+
+# Point Cloud Range Law
 # For !VOXEL BASED! detectors only such as SECOND, PV-RCNN and CenterPoint.
 # Law: point cloud range along z-axis / voxel_size is 40.
 # Example:
@@ -20,7 +16,6 @@ DATA_PATH: '../data/kitti'
 
 # BEVDetNet paper: x(0, 60), y(-30, 30), z(-2.73, 1.27)
 POINT_CLOUD_RANGE: [0, -30, -2.73, 60, 30, 1.27]
-
 
 # OpenPCDet only evaluates on the val set. The BEVDetNet paper implementation does also, so no need to change here something.
 DATA_SPLIT: {
@@ -102,15 +97,15 @@ DATA_PROCESSOR:
         'train': True,
         'test': False
       }
-
-    ##################  
-    # Voxel size Law #
-    ##################
+  
+    # Voxel size Law 
     # For voxel based detectors such as SECOND, PV-RCNN and CenterPoint.
     # Law: point cloud range along x,y -axis / voxel_size is the multiple of 16.
     # range_x = x_max - x_min ; range_x / voxel_size mod 16 = 0
     # Notice that the second rule also suit pillar based detectors such as PointPillar and CenterPoint-Pillar.
+
     # Example:
+    
     # x = [0, 70.4] ; y = [-40, 40]
     # x-axis: 70.4 - 0 = 70.4 / 0.1 = 704 mod 16 = 0
     # y-axis: 40 - (-40) = 80 / 0.1 = 800 mod 16 = 0
